@@ -32,7 +32,11 @@ const FORBIDDEN_PATTERNS = [
   { name: "internal deployment infra", pattern: /promote-staging|gitops repo/i },
 ];
 
-for (const file of trackedFiles) {
+// This file itself legitimately contains the forbidden strings, as the
+// pattern literals just above — scanning it would always self-match.
+const selfPath = path.relative(repoRoot, fileURLToPath(import.meta.url));
+
+for (const file of trackedFiles.filter((f) => f !== selfPath)) {
   test(`${file}: no forbidden references`, () => {
     const content = readFileSync(path.join(repoRoot, file), "utf8");
     for (const { name, pattern } of FORBIDDEN_PATTERNS) {

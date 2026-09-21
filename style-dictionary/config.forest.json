@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/forest.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "forest.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"forest\"]" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/corporate.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "corporate.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"corporate\"]" }
+        }
+      ]
+    }
+  }
+}

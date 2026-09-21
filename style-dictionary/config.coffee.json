@@ -1,14 +1,14 @@
 {
-  "source": ["tokens/daisyui/daisyui-light.json"],
+  "source": ["tokens/daisyui/coffee.json"],
   "platforms": {
     "css": {
       "transformGroup": "css",
       "buildPath": "dist/css/tokens/",
       "files": [
         {
-          "destination": "daisyui-light.css",
+          "destination": "coffee.css",
           "format": "css/variables",
-          "options": { "selector": "[data-theme=\"daisyui-light\"]" }
+          "options": { "selector": "[data-theme=\"coffee\"]" }
         }
       ]
     }

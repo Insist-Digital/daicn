@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/halloween.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "halloween.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"halloween\"]" }
+        }
+      ]
+    }
+  }
+}

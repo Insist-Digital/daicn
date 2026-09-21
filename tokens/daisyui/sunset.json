@@ -1,0 +1,52 @@
+{
+  "$description": "daisyUI 'sunset' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'sunset' theme's own --radius-box value. Note: this theme's own --radius-field is 0.5rem, notably smaller than box — the box anchor overshoots this theme's field roundness. See design.md for the box-anchor compromise." },
+  "background": { "$type": "color", "$value": "oklch(22% 0.019 237.69)", "$description": "daisyUI 'sunset' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(77.383% 0.043 245.096)", "$description": "daisyUI 'sunset' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(74.703% 0.158 39.947)", "$description": "daisyUI 'sunset' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(14.94% 0.031 39.947)", "$description": "daisyUI 'sunset' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(20% 0.03 2.72)", "$description": "daisyUI 'sunset' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(20% 0.019 237.69)", "$description": "daisyUI 'sunset' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(65% 0.02 245.096)" },
+
+  "accent": { "$type": "color", "$value": "oklch(20% 0.02 299.844)", "$description": "daisyUI 'sunset' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(85.511% 0.078 16.886)", "$description": "daisyUI 'sunset' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(17.102% 0.015 16.886)", "$description": "daisyUI 'sunset' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(85.559% 0.085 206.015)", "$description": "daisyUI 'sunset' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(17.111% 0.017 206.015)", "$description": "daisyUI 'sunset' info-content" },
+  "success": { "$type": "color", "$value": "oklch(85.56% 0.085 144.778)", "$description": "daisyUI 'sunset' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(17.112% 0.017 144.778)", "$description": "daisyUI 'sunset' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(85.569% 0.084 74.427)", "$description": "daisyUI 'sunset' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(17.113% 0.016 74.427)", "$description": "daisyUI 'sunset' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(18% 0.019 237.69)", "$description": "daisyUI 'sunset' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(71.294% 0.166 299.844)", "$description": "daisyUI 'sunset' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/sunset.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "sunset.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"sunset\"]" }
+        }
+      ]
+    }
+  }
+}
