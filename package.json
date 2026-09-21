@@ -16,7 +16,7 @@
     "build": "node scripts/build.mjs",
     "prepare": "node scripts/build.mjs"
   },
-  "dependencies": {
+  "devDependencies": {
     "style-dictionary": "^5.5.4"
   }
 }
