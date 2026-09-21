@@ -1,0 +1,23 @@
+{
+  "name": "daicn",
+  "version": "0.1.0",
+  "description": "Framework-agnostic design tokens (color, radius) — DTCG JSON source, generated CSS.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "tokens",
+    "dist",
+    "scripts",
+    "style-dictionary",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepare": "node scripts/build.mjs",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.5.4"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/autumn.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "autumn.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"autumn\"]" }
+        }
+      ]
+    }
+  }
+}

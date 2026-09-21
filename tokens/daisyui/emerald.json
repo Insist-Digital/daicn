@@ -1,0 +1,52 @@
+{
+  "$description": "daisyUI 'emerald' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'emerald' theme's own --radius-box value. See design.md for why box is the single anchor used." },
+  "background": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'emerald' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(35.519% 0.032 262.988)", "$description": "daisyUI 'emerald' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(76.662% 0.135 153.45)", "$description": "daisyUI 'emerald' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(33.387% 0.04 162.24)", "$description": "daisyUI 'emerald' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(93% 0.03 261.294)", "$description": "daisyUI 'emerald' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(93% 0 0)", "$description": "daisyUI 'emerald' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 262.988)" },
+
+  "accent": { "$type": "color", "$value": "oklch(93% 0.02 33.2)", "$description": "daisyUI 'emerald' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(71.76% 0.221 22.18)", "$description": "daisyUI 'emerald' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'emerald' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(72.06% 0.191 231.6)", "$description": "daisyUI 'emerald' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'emerald' info-content" },
+  "success": { "$type": "color", "$value": "oklch(64.8% 0.15 160)", "$description": "daisyUI 'emerald' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'emerald' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(84.71% 0.199 83.87)", "$description": "daisyUI 'emerald' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'emerald' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(86% 0 0)", "$description": "daisyUI 'emerald' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(72.772% 0.149 33.2)", "$description": "daisyUI 'emerald' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

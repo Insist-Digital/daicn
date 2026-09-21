@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/nord.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "nord.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"nord\"]" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/night.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "night.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"night\"]" }
+        }
+      ]
+    }
+  }
+}

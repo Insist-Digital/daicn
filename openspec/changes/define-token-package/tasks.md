@@ -1,26 +1,33 @@
 ## 1. Package skeleton
 
-- [ ] 1.1 Author `package.json`: name `daicn`, MIT license, Style Dictionary as a dependency, a `prepare` script that runs the Style Dictionary build.
-- [ ] 1.2 Add `dist/` to `.gitignore` (generated output is never committed).
+- [x] 1.1 Author `package.json`: name `daicn`, MIT license, Style Dictionary as a dependency, a `prepare` script that runs the Style Dictionary build.
+- [x] 1.2 Add `dist/` to `.gitignore` (generated output is never committed).
 
 ## 2. Token source
 
-- [ ] 2.1 Add `tokens/color/*.json` (DTCG-format), seeded from the source application's existing color palette — one file per theme.
-- [ ] 2.2 Add `tokens/radius.json` (DTCG-format), a single base radius value per theme.
-- [ ] 2.3 Review every added file's `$description`/comment content to confirm nothing references the source application's internal documents, decision logs, or client identity.
+- [x] 2.1 Add `tokens/daisyui/*.json` (DTCG-format), seeded from the source application's existing color palette — one file per theme. (Path is `tokens/daisyui/`, not `tokens/color/` — grouped by provenance rather than category, decided during implementation.)
+- [x] 2.2 Add a `radius` token to each theme file, one real value per theme. (Corrected mid-implementation: the original plan put one shared value in a standalone `tokens/radius.json`, sourced only into the light theme's config — meaning every theme, including dark mode, silently shared one radius with zero variation. Fixed by pulling each theme's actual `--radius-box` value from daisyUI's own published source (`saadeghi/daisyui`) and moving radius into each theme's own `tokens/daisyui/<theme>.json` file; `tokens/radius.json` is deleted. See design.md decision 6 for the box-vs-field/selector anchor trade-off this involves.)
+- [x] 2.3 Review every added file's `$description`/comment content to confirm nothing references the source application's internal documents, decision logs, or client identity. (Rewrote the source application's own internal design-document references in `light.json`/`dark.json`, and generalized the 15 demo themes' top-level descriptions, which referenced the source application's own change name and script path.)
 
 ## 3. Build configuration
 
-- [ ] 3.1 Author the Style Dictionary configuration producing the base layer: one plain-CSS-custom-property file per theme (`:root`/`.dark`/`[data-theme="x"]` as appropriate).
-- [ ] 3.2 Author the Style Dictionary configuration (or hand-authored static file, since its content doesn't vary per theme) producing the Tailwind adapter layer: the `@theme inline` bridge plus the 7-step multiplicative radius scale derived from the single base radius value.
+- [x] 3.1 Author the Style Dictionary configuration producing the base layer: one plain-CSS-custom-property file per theme (`:root`/`.dark`/`[data-theme="x"]` as appropriate).
+- [x] 3.2 Author the Style Dictionary configuration (or hand-authored static file, since its content doesn't vary per theme) producing the Tailwind adapter layer: the `@theme inline` bridge plus the 7-step multiplicative radius scale derived from the single base radius value.
 
 ## 4. Verify
 
-- [ ] 4.1 Install this package as a git-URL dependency in a fresh test project; confirm the `prepare` script generates CSS output automatically on install with no manual build step.
-- [ ] 4.2 Install into the Astro app (Tailwind, no shadcn): import base-layer CSS only for at least one theme; confirm token values render correctly with no Tailwind adapter installed.
-- [ ] 4.3 In the same Astro app, add the Tailwind adapter import; confirm Tailwind utility classes (including radius utilities) work as expected.
+- [x] 4.1 Install this package as a git-URL dependency in a fresh test project; confirm the `prepare` script generates CSS output automatically on install with no manual build step. (Verified: `npm install git+file://.../daicn` in a scratch project froze/cloned the repo, ran `prepare` automatically, and generated all 17 theme files plus the Tailwind adapter fresh inside the consumer's own `node_modules/daicn/dist/`.)
+- [x] 4.2 Install into a real Astro (Tailwind, no shadcn) consumer app: import base-layer CSS only for at least one theme; confirm token values render correctly with no Tailwind adapter installed. (Verified — installed via Yarn Berry as a real `github:Insist-Digital/daicn#implement-token-package` dependency in a separate test project. Compiled output confirms `:root{--radius:.25rem}` and `.dark{--radius:.5rem}` resolving from the base layer alone. Also confirmed a subset import (2 of the 17 themes) produces only those themes' CSS in the compiled output, with no reference to the unused themes — the file-per-theme structure makes this true by construction, not something a manifest enforces.)
+- [x] 4.3 In the same consumer app, add the Tailwind adapter import; confirm Tailwind utility classes (including radius utilities) work as expected. (Verified: compiled CSS contains `.bg-background{background-color:var(--background)}`, `.text-primary{color:var(--primary)}`, and `.rounded-2xl{border-radius:calc(var(--radius) * 1.8)}` — the correct 7-step multiplicative formula, generated correctly by Tailwind's own build from the adapter layer.)
 
-## 5. Publish
+## 5. Automated test coverage (added after PR review)
 
-- [ ] 5.1 Re-run a content check across every file in this repository for client name, internal document references, or infrastructure details before tagging a first version.
-- [ ] 5.2 Tag and push a first version (for example `v0.1.0`).
+- [x] 5.1 Add a real test suite (`node:test`, no new dependency): `test/tokens.test.mjs` validates every theme's JSON source (required color keys, radius presence); `test/build.test.mjs` runs the actual build and checks generated CSS (this is the test that would have caught the original per-theme-radius bug — see 2.2); `test/tailwind-adapter.test.mjs` pins the radius formula against ever drifting back to an older scale; `test/leak-check.test.mjs` automates the content-safety check (see 5.1 below) across every git-tracked file.
+- [x] 5.2 Port `scripts/daisyui-theme-to-tokens.mjs` from the source application into this repository, extended to also capture `radius` (the source application's copy skipped it, written before this package's per-theme radius model existed). Validate it with a golden-fixture regression test (`test/daisyui-theme-to-tokens.test.mjs`) against `cupcake`'s real daisyUI source, checked against the already-shipped `cupcake.json` — exact match. Testing caught a real bug before shipping the 18 new themes below: the radius-divergence-note logic broke at `--radius-box: 0rem` (two real daisyUI themes, `black` and `cyberpunk`), falsely reporting divergence where none existed. Fixed and covered by its own test.
+- [x] 5.3 Corrected which daisyUI theme is the package's canonical `light.json`: it was `corporate` (the source application's own placeholder pick, not a deliberate choice for this package), while daisyUI's own actual `light` theme — the one daisyUI itself documents as the real default, paired with `dark` — was relegated to a demo theme file named `daisyui-light.json`. Swapped: `light.json` now holds daisyUI's real `light` theme; the former content is `corporate.json`, one more named demo theme like any other.
+- [x] 5.4 Using the now-tested script, added the 18 daisyUI built-in themes the source application never converted (`abyss`, `acid`, `aqua`, `black`, `business`, `caramellatte`, `coffee`, `cyberpunk`, `dracula`, `forest`, `halloween`, `lemonade`, `lofi`, `luxury`, `silk`, `sunset`, `synthwave`, `wireframe`) — this package now covers all 35 of daisyUI's current built-in themes, not an arbitrary subset. Matching Style Dictionary configs added for each; full rebuild and test suite pass (314 tests).
+
+## 6. Publish
+
+- [x] 6.1 Re-run a content check across every file in this repository (including documentation, not just token/config files) for client name, source-application-specific references, infrastructure details, or component/framework-logic code before tagging a first version. (Grepped the entire repository, docs included — clean. Two real findings caught and fixed by this check: this task's own earlier completion notes had written the source application's real name and its internal design-document numbering directly into this repo's own docs, which is exactly the kind of leak this check exists to catch — both reworded. No component or framework-logic code exists anywhere in the package — every file is `.json`, `.css`, `.mjs`, or `.md`. Now also covered automatically by `test/leak-check.test.mjs`, not just this one-off pass.)
+- [ ] 6.2 Tag and push a first version (for example `v0.1.0`). **Not done** — held pending final review of this expanded scope and explicit confirmation, since tagging/pushing a public release is a real, externally-visible action.

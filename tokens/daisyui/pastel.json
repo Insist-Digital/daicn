@@ -1,0 +1,52 @@
+{
+  "$description": "daisyUI 'pastel' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'pastel' theme's own --radius-box value. Note: this theme's own --radius-field is 2rem, notably larger than box — the box anchor undershoots this theme's field/control roundness more than most. See design.md for the box-anchor compromise." },
+  "background": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'pastel' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(20% 0 0)", "$description": "daisyUI 'pastel' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(90% 0.063 306.703)", "$description": "daisyUI 'pastel' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(49% 0.265 301.924)", "$description": "daisyUI 'pastel' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(98.462% 0.03 10.001)", "$description": "daisyUI 'pastel' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(98.462% 0.001 247.838)", "$description": "daisyUI 'pastel' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 0)" },
+
+  "accent": { "$type": "color", "$value": "oklch(98.462% 0.02 164.15)", "$description": "daisyUI 'pastel' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(80% 0.114 19.571)", "$description": "daisyUI 'pastel' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(50% 0.213 27.518)", "$description": "daisyUI 'pastel' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(86% 0.127 207.078)", "$description": "daisyUI 'pastel' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(52% 0.105 223.128)", "$description": "daisyUI 'pastel' info-content" },
+  "success": { "$type": "color", "$value": "oklch(87% 0.15 154.449)", "$description": "daisyUI 'pastel' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(52% 0.154 150.069)", "$description": "daisyUI 'pastel' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(83% 0.128 66.29)", "$description": "daisyUI 'pastel' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(55% 0.195 38.402)", "$description": "daisyUI 'pastel' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(92.462% 0.001 247.838)", "$description": "daisyUI 'pastel' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(90% 0.093 164.15)", "$description": "daisyUI 'pastel' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

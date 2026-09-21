@@ -1,0 +1,52 @@
+{
+  "$description": "daisyUI 'cyberpunk' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "0rem", "$description": "daisyUI 'cyberpunk' theme's own --radius-box value. See design.md for why box is the single anchor used." },
+  "background": { "$type": "color", "$value": "oklch(94.51% 0.179 104.32)", "$description": "daisyUI 'cyberpunk' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'cyberpunk' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(74.22% 0.209 6.35)", "$description": "daisyUI 'cyberpunk' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(14.844% 0.041 6.35)", "$description": "daisyUI 'cyberpunk' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(91.51% 0.03 204.72)", "$description": "daisyUI 'cyberpunk' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(91.51% 0.179 104.32)", "$description": "daisyUI 'cyberpunk' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 0)" },
+
+  "accent": { "$type": "color", "$value": "oklch(91.51% 0.02 310.43)", "$description": "daisyUI 'cyberpunk' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(71.76% 0.221 22.18)", "$description": "daisyUI 'cyberpunk' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'cyberpunk' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(72.06% 0.191 231.6)", "$description": "daisyUI 'cyberpunk' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'cyberpunk' info-content" },
+  "success": { "$type": "color", "$value": "oklch(64.8% 0.15 160)", "$description": "daisyUI 'cyberpunk' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'cyberpunk' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(84.71% 0.199 83.87)", "$description": "daisyUI 'cyberpunk' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'cyberpunk' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(85.51% 0.179 104.32)", "$description": "daisyUI 'cyberpunk' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(71.86% 0.217 310.43)", "$description": "daisyUI 'cyberpunk' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

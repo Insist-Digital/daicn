@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/fantasy.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "fantasy.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"fantasy\"]" }
+        }
+      ]
+    }
+  }
+}

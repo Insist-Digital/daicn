@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/coffee.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "coffee.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"coffee\"]" }
+        }
+      ]
+    }
+  }
+}

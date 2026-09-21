@@ -1,11 +1,15 @@
 ## ADDED Requirements
 
 ### Requirement: DTCG JSON token source is the package's primary artifact
-This package SHALL distribute color and radius tokens as DTCG-format JSON source files, treated as the authoritative artifact — every other output this package produces SHALL be a mechanical Style Dictionary build of this source, never hand-authored independently of it.
+This package SHALL distribute color and radius tokens as DTCG-format JSON source files, treated as the authoritative artifact — every token-value output this package produces SHALL be a mechanical Style Dictionary build of this source, never hand-authored independently of it. The Tailwind adapter file (`style-dictionary/tailwind-adapter.css`) is a named exception: it carries no token values of its own (every value it emits is a `var()` reference into a base-layer file this requirement already governs), its content is identical for every theme, and it exists to wire those values into Tailwind's `@theme inline` namespace — there is nothing for a mechanical build to generate that hand-authoring doesn't already produce correctly. It is still copied into `dist/` by the same build step as everything else, so it's never hand-copied by a consumer.
 
 #### Scenario: A new platform target is added later
 - **WHEN** a future need arises for an output format this package doesn't yet produce (for example, an iOS or Android platform target)
 - **THEN** it is added as one more Style Dictionary build configuration reading the existing JSON source, with no change to the JSON source's own structure
+
+#### Scenario: The Tailwind adapter's content changes
+- **WHEN** shadcn's own radius-scale formula or variable-naming convention changes in a way this package wants to track
+- **THEN** `style-dictionary/tailwind-adapter.css` is edited directly, by hand — it does not require a token-source or Style Dictionary config change, since it carries no theme-specific data
 
 ### Requirement: CSS output is generated at install time, never committed to source control
 This package SHALL generate its CSS output (both the base layer and the Tailwind adapter layer) via its own npm `prepare` lifecycle script at install time, and SHALL NOT commit generated CSS files to its git repository.

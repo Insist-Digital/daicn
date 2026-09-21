@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/pastel.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "pastel.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"pastel\"]" }
+        }
+      ]
+    }
+  }
+}

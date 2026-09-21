@@ -1,0 +1,51 @@
+{
+  "$description": "daisyUI 'corporate' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "0.25rem", "$description": "daisyUI 'corporate' theme's own --radius-box value. Anchors shadcn's single derived radius scale to this theme's box/container radius specifically — a deliberate compromise: shadcn has one radius scale, daisyUI has three independent roles (selector/field/box) that don't share a fixed ratio across themes, so anchoring to box gives exact fidelity for Card/Dialog-style surfaces and an approximation for smaller controls. See daicn's design.md for the full reasoning; revisit if/when a 3-role radius system is ever built." },
+  "background": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'corporate' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(22.389% 0.031 278.072)", "$description": "daisyUI 'corporate' base-content" },
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(58% 0.158 241.966)", "$description": "daisyUI 'corporate' primary — bold, matches shadcn's bold-primary convention directly" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(100% 0 0)" },
+
+  "secondary": { "$type": "color", "$value": "oklch(93% 0.01 257.417)", "$description": "daisyUI secondary HUE, re-lightened to shadcn's subtle-secondary tonal role (not daisyUI's bold 55%-lightness value)" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(93% 0 0)", "$description": "daisyUI base-200, achromatic" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 278.072)" },
+
+  "accent": { "$type": "color", "$value": "oklch(93% 0.015 184.704)", "$description": "daisyUI accent (teal) HUE, re-lightened to shadcn's subtle-accent/hover tonal role" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(70% 0.191 22.216)", "$description": "daisyUI 'corporate' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(60% 0.126 221.723)", "$description": "daisyUI 'corporate' info; stock shadcn has no semantic status scale beyond destructive" },
+  "info-foreground": { "$type": "color", "$value": "oklch(100% 0 0)" },
+  "success": { "$type": "color", "$value": "oklch(62% 0.194 149.214)", "$description": "daisyUI 'corporate' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(100% 0 0)" },
+  "warning": { "$type": "color", "$value": "oklch(85% 0.199 91.936)", "$description": "daisyUI 'corporate' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(0% 0 0)" },
+
+  "border": { "$type": "color", "$value": "oklch(86% 0 0)", "$description": "daisyUI base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(60% 0.118 184.704)", "$description": "daisyUI 'corporate' accent, bold — used directly here since charts need contrast, unlike the re-lightened {accent} token above" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

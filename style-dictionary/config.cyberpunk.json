@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/cyberpunk.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "cyberpunk.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"cyberpunk\"]" }
+        }
+      ]
+    }
+  }
+}

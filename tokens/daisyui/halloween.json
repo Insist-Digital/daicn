@@ -1,0 +1,52 @@
+{
+  "$description": "daisyUI 'halloween' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'halloween' theme's own --radius-box value. Note: this theme's own --radius-field is 0.5rem, notably smaller than box — the box anchor overshoots this theme's field roundness. See design.md for the box-anchor compromise." },
+  "background": { "$type": "color", "$value": "oklch(21% 0.006 56.043)", "$description": "daisyUI 'halloween' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(84.955% 0 0)", "$description": "daisyUI 'halloween' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(77.48% 0.204 60.62)", "$description": "daisyUI 'halloween' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(19.693% 0.004 196.779)", "$description": "daisyUI 'halloween' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(14% 0.03 305.03)", "$description": "daisyUI 'halloween' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(14% 0.004 49.25)", "$description": "daisyUI 'halloween' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(65% 0.02 0)" },
+
+  "accent": { "$type": "color", "$value": "oklch(14% 0.02 136.073)", "$description": "daisyUI 'halloween' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(65.72% 0.199 27.33)", "$description": "daisyUI 'halloween' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(13.144% 0.039 27.33)", "$description": "daisyUI 'halloween' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(54.615% 0.215 262.88)", "$description": "daisyUI 'halloween' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(90.923% 0.043 262.88)", "$description": "daisyUI 'halloween' info-content" },
+  "success": { "$type": "color", "$value": "oklch(62.705% 0.169 149.213)", "$description": "daisyUI 'halloween' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(12.541% 0.033 149.213)", "$description": "daisyUI 'halloween' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(66.584% 0.157 58.318)", "$description": "daisyUI 'halloween' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(13.316% 0.031 58.318)", "$description": "daisyUI 'halloween' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'halloween' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(64.8% 0.223 136.073)", "$description": "daisyUI 'halloween' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

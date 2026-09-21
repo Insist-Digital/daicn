@@ -1,0 +1,52 @@
+{
+  "$description": "daisyUI 'caramellatte' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'caramellatte' theme's own --radius-box value. Note: this theme's own --radius-selector is 2rem, notably larger than box; this theme's own --radius-field is 0.5rem, notably smaller than box — the box anchor undershoots this theme's selector/field roundness. See design.md for the box-anchor compromise." },
+  "background": { "$type": "color", "$value": "oklch(98% 0.016 73.684)", "$description": "daisyUI 'caramellatte' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(40% 0.123 38.172)", "$description": "daisyUI 'caramellatte' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(0% 0 0)", "$description": "daisyUI 'caramellatte' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'caramellatte' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(95% 0.03 37.85)", "$description": "daisyUI 'caramellatte' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(95% 0.038 75.164)", "$description": "daisyUI 'caramellatte' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 38.172)" },
+
+  "accent": { "$type": "color", "$value": "oklch(95% 0.02 37.85)", "$description": "daisyUI 'caramellatte' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(70% 0.191 22.216)", "$description": "daisyUI 'caramellatte' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(39% 0.141 25.723)", "$description": "daisyUI 'caramellatte' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(42% 0.199 265.638)", "$description": "daisyUI 'caramellatte' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(90% 0.076 70.697)", "$description": "daisyUI 'caramellatte' info-content" },
+  "success": { "$type": "color", "$value": "oklch(43% 0.095 166.913)", "$description": "daisyUI 'caramellatte' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(90% 0.076 70.697)", "$description": "daisyUI 'caramellatte' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(82% 0.189 84.429)", "$description": "daisyUI 'caramellatte' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(41% 0.112 45.904)", "$description": "daisyUI 'caramellatte' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(90% 0.076 70.697)", "$description": "daisyUI 'caramellatte' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(46.44% 0.111 37.85)", "$description": "daisyUI 'caramellatte' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}
