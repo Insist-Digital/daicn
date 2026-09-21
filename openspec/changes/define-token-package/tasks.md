@@ -17,8 +17,8 @@
 ## 4. Verify
 
 - [x] 4.1 Install this package as a git-URL dependency in a fresh test project; confirm the `prepare` script generates CSS output automatically on install with no manual build step. (Verified: `npm install git+file://.../daicn` in a scratch project froze/cloned the repo, ran `prepare` automatically, and generated all 17 theme files plus the Tailwind adapter fresh inside the consumer's own `node_modules/daicn/dist/`.)
-- [ ] 4.2 Install into the Astro app (Tailwind, no shadcn): import base-layer CSS only for at least one theme; confirm token values render correctly with no Tailwind adapter installed. **Blocked**: this session doesn't have access to that project. Needs to be done by whoever has it.
-- [ ] 4.3 In the same Astro app, add the Tailwind adapter import; confirm Tailwind utility classes (including radius utilities) work as expected. **Blocked**: same as 4.2.
+- [x] 4.2 Install into the Astro app (Tailwind, no shadcn): import base-layer CSS only for at least one theme; confirm token values render correctly with no Tailwind adapter installed. (Verified against `spysters-auto-website` — installed via Yarn Berry as a real `github:Insist-Digital/daicn#implement-token-package` dependency. Compiled output confirms `:root{--radius:.25rem}` and `.dark{--radius:.5rem}` resolving from the base layer alone.)
+- [x] 4.3 In the same Astro app, add the Tailwind adapter import; confirm Tailwind utility classes (including radius utilities) work as expected. (Verified: compiled CSS contains `.bg-background{background-color:var(--background)}`, `.text-primary{color:var(--primary)}`, and `.rounded-2xl{border-radius:calc(var(--radius) * 1.8)}` — the correct 7-step multiplicative formula, generated correctly by Tailwind's own build from the adapter layer.)
 
 ## 5. Publish
 
