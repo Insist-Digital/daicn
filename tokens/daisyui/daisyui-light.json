@@ -1,5 +1,6 @@
 {
   "$description": "daisyUI 'daisyui-light' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "0.5rem", "$description": "daisyUI 'daisyui-light' theme's own --radius-box value. See design.md for why box is the single anchor used." },
   "background": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'daisyui-light' base-100" },
   "foreground": { "$type": "color", "$value": "oklch(21% 0.006 285.885)", "$description": "daisyUI 'daisyui-light' base-content" },
 

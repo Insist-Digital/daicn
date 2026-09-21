@@ -1,5 +1,6 @@
 {
   "$description": "daisyUI 'pastel' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'pastel' theme's own --radius-box value. Note: this theme's own --radius-field is 2rem, notably larger than box — the box anchor undershoots this theme's field/control roundness more than most. See design.md for the box-anchor compromise." },
   "background": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'pastel' base-100" },
   "foreground": { "$type": "color", "$value": "oklch(20% 0 0)", "$description": "daisyUI 'pastel' base-content" },
 

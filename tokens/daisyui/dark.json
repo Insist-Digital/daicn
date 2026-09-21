@@ -1,4 +1,5 @@
 {
+  "radius": { "$type": "dimension", "$value": "0.5rem", "$description": "daisyUI 'dark' theme's own --radius-box value. See design.md for why box is the single anchor used (a deliberate compromise, not a full match to daisyUI's three independent radius roles)." },
   "background": { "$type": "color", "$value": "oklch(25.33% 0.016 252.42)", "$description": "daisyUI 'dark' theme base-100 — sourced from daisyUI's own real dark theme, not an algorithmic lighten/invert of the light theme's values" },
   "foreground": { "$type": "color", "$value": "oklch(97.807% 0.029 256.847)", "$description": "daisyUI 'dark' theme base-content" },
   "card": { "$type": "color", "$value": "{background}" },

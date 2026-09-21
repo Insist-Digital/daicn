@@ -1,5 +1,6 @@
 {
   "$description": "daisyUI 'garden' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'garden' theme's own --radius-box value. See design.md for why box is the single anchor used." },
   "background": { "$type": "color", "$value": "oklch(92.951% 0.002 17.197)", "$description": "daisyUI 'garden' base-100" },
   "foreground": { "$type": "color", "$value": "oklch(16.961% 0.001 17.32)", "$description": "daisyUI 'garden' base-content" },
 

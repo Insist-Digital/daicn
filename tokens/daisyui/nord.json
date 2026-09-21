@@ -1,5 +1,6 @@
 {
   "$description": "daisyUI 'nord' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "0.5rem", "$description": "daisyUI 'nord' theme's own --radius-box value. Note: this theme's own --radius-selector is 1rem, notably larger than box — the box anchor undershoots this theme's selector roundness. See design.md for the box-anchor compromise." },
   "background": { "$type": "color", "$value": "oklch(95.127% 0.007 260.731)", "$description": "daisyUI 'nord' base-100" },
   "foreground": { "$type": "color", "$value": "oklch(32.437% 0.022 264.182)", "$description": "daisyUI 'nord' base-content" },
 

@@ -1,7 +1,0 @@
-{
-  "radius": {
-    "$type": "dimension",
-    "$value": "0.625rem",
-    "$description": "Single base radius value per theme, matching shadcn's own stock default. The Tailwind adapter layer derives the full rounded-sm..rounded-4xl scale from this one value via shadcn's current 7-step multiplicative calc() formula; a plain-CSS consumer uses this value directly wherever it needs a border-radius."
-  }
-}

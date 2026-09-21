@@ -6,7 +6,7 @@
 ## 2. Token source
 
 - [x] 2.1 Add `tokens/daisyui/*.json` (DTCG-format), seeded from the source application's existing color palette — one file per theme. (Path is `tokens/daisyui/`, not `tokens/color/` — grouped by provenance rather than category, decided during implementation.)
-- [x] 2.2 Add `tokens/radius.json` (DTCG-format), a single base radius value per theme. (Lives outside `tokens/daisyui/` — it's shadcn's own stock default, not a daisyUI-sourced value.)
+- [x] 2.2 Add a `radius` token to each theme file, one real value per theme. (Corrected mid-implementation: the original plan put one shared value in a standalone `tokens/radius.json`, sourced only into the light theme's config — meaning every theme, including dark mode, silently shared one radius with zero variation. Fixed by pulling each theme's actual `--radius-box` value from daisyUI's own published source (`saadeghi/daisyui`) and moving radius into each theme's own `tokens/daisyui/<theme>.json` file; `tokens/radius.json` is deleted. See design.md decision 6 for the box-vs-field/selector anchor trade-off this involves.)
 - [x] 2.3 Review every added file's `$description`/comment content to confirm nothing references the source application's internal documents, decision logs, or client identity. (Rewrote `design.md decision 11` references in `light.json`/`dark.json`, and generalized the 15 demo themes' top-level descriptions, which referenced the source application's own change name and script path.)
 
 ## 3. Build configuration

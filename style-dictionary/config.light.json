@@ -1,5 +1,5 @@
 {
-  "source": ["tokens/radius.json", "tokens/daisyui/light.json"],
+  "source": ["tokens/daisyui/light.json"],
   "platforms": {
     "css": {
       "transformGroup": "css",

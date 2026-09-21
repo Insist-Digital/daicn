@@ -1,5 +1,6 @@
 {
   "$description": "daisyUI 'cupcake' theme, remapped to shadcn's CSS variable naming convention.",
+  "radius": { "$type": "dimension", "$value": "1rem", "$description": "daisyUI 'cupcake' theme's own --radius-box value. Note: this theme's own --radius-field is 2rem, notably larger than box — the box anchor undershoots this theme's field/control roundness more than most. See design.md for the box-anchor compromise." },
   "background": { "$type": "color", "$value": "oklch(97.788% 0.004 56.375)", "$description": "daisyUI 'cupcake' base-100" },
   "foreground": { "$type": "color", "$value": "oklch(23.574% 0.066 313.189)", "$description": "daisyUI 'cupcake' base-content" },
 
