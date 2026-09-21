@@ -1,4 +1,5 @@
 {
+  "$description": "daisyUI 'corporate' theme, remapped to shadcn's CSS variable naming convention.",
   "radius": { "$type": "dimension", "$value": "0.25rem", "$description": "daisyUI 'corporate' theme's own --radius-box value. Anchors shadcn's single derived radius scale to this theme's box/container radius specifically — a deliberate compromise: shadcn has one radius scale, daisyUI has three independent roles (selector/field/box) that don't share a fixed ratio across themes, so anchoring to box gives exact fidelity for Card/Dialog-style surfaces and an approximation for smaller controls. See daicn's design.md for the full reasoning; revisit if/when a 3-role radius system is ever built." },
   "background": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'corporate' base-100" },
   "foreground": { "$type": "color", "$value": "oklch(22.389% 0.031 278.072)", "$description": "daisyUI 'corporate' base-content" },
