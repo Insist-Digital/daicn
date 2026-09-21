@@ -1,0 +1,152 @@
+name: OpenCodeReview
+
+on:
+  pull_request_target:
+    types: [opened, ready_for_review]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: >-
+    ${{
+      (
+        (
+          github.event_name == 'pull_request_target'
+          && (
+            github.event.action == 'ready_for_review'
+            || (github.event.action == 'opened' && github.event.pull_request.draft == false)
+          )
+        )
+        || (
+          github.event_name == 'issue_comment'
+          && github.event.issue.pull_request
+          && github.event.comment.user.type != 'Bot'
+          && (
+            github.event.comment.author_association == 'OWNER'
+            || github.event.comment.author_association == 'MEMBER'
+            || github.event.comment.author_association == 'COLLABORATOR'
+          )
+          && startsWith(github.event.comment.body, '@open-code-review')
+        )
+      )
+      && format('open-code-review-{0}', github.event.pull_request.number || github.event.issue.number)
+      || format('open-code-review-noop-{0}', github.run_id)
+    }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Review pull request
+    if: |
+      (
+        github.event_name == 'pull_request_target'
+        && (
+          github.event.action == 'ready_for_review'
+          || (github.event.action == 'opened' && github.event.pull_request.draft == false)
+        )
+      )
+      || (
+        github.event_name == 'issue_comment'
+        && github.event.issue.pull_request
+        && github.event.comment.user.type != 'Bot'
+        && (
+          github.event.comment.author_association == 'OWNER'
+          || github.event.comment.author_association == 'MEMBER'
+          || github.event.comment.author_association == 'COLLABORATOR'
+        )
+        && startsWith(github.event.comment.body, '@open-code-review')
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Resolve pull request and review rules
+        id: context
+        # actions/github-script v7.0.1
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b
+        with:
+          script: |
+            const fs = require('fs');
+
+            const pullNumber = context.payload.pull_request?.number ?? context.issue.number;
+            let pullRequest = context.payload.pull_request;
+
+            if (!pullRequest) {
+              const response = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pullNumber,
+              });
+              pullRequest = response.data;
+            }
+
+            const changedFiles = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pullNumber,
+              per_page: 100,
+            });
+
+            const globCharacters = new Set(['\\', '*', '?', '[', ']', '{', '}']);
+            const escapeGlob = (value) => [...value]
+              .map((character) => globCharacters.has(character) ? `\\${character}` : character)
+              .join('');
+
+            const excludedMarkdown = changedFiles
+              .map((file) => file.filename)
+              .filter((filename) => {
+                const normalized = filename.toLowerCase();
+                return normalized.endsWith('.md') && !normalized.startsWith('openspec/');
+              })
+              .map(escapeGlob);
+
+            const rules = {
+              include: ['openspec/**/*.md'],
+              exclude: excludedMarkdown,
+              rules: [
+                {
+                  path: 'openspec/**/*.md',
+                  rule: [
+                    'Review this OpenSpec artifact (spec-driven schema) for correctness and internal consistency.',
+                    'Check proposal, design, specification, scenario, and task alignment;',
+                    'verify requirements use SHALL/MUST and that each requirement has at least one',
+                    'testable WHEN/THEN scenario; identify contradictions, missing or ambiguous',
+                    'requirements, untestable scenarios, incomplete task coverage, and unaddressed',
+                    'compatibility or migration implications. Report only concrete, actionable findings.',
+                  ].join(' '),
+                },
+              ],
+            };
+
+            const rulePath = '/tmp/open-code-review-rules.json';
+            fs.writeFileSync(rulePath, `${JSON.stringify(rules, null, 2)}\n`, {
+              encoding: 'utf8',
+              mode: 0o600,
+            });
+            JSON.parse(fs.readFileSync(rulePath, 'utf8'));
+
+            core.info(`Excluded ${excludedMarkdown.length} non-OpenSpec Markdown file(s).`);
+            core.setOutput('base_ref', pullRequest.base.ref);
+            core.setOutput('head_sha', pullRequest.head.sha);
+            core.setOutput('title', pullRequest.title);
+            core.setOutput('rule_path', rulePath);
+
+      - name: Run OpenCodeReview
+        # alibaba/open-code-review v1.7.14
+        uses: alibaba/open-code-review@870fc6a4a92569ebf3edb0052925bbea7f26b964
+        with:
+          llm_url: ${{ vars.OCR_LLM_URL }}
+          llm_auth_token: ${{ secrets.OCR_LLM_AUTH_TOKEN }}
+          llm_model: ${{ vars.OCR_LLM_MODEL }}
+          llm_use_anthropic: ${{ vars.OCR_LLM_USE_ANTHROPIC }}
+          base_ref: ${{ steps.context.outputs.base_ref }}
+          head_sha: ${{ steps.context.outputs.head_sha }}
+          background: ${{ steps.context.outputs.title }}
+          rule: ${{ steps.context.outputs.rule_path }}
+          sticky_summary: 'true'
+          upload_artifacts: 'false'
