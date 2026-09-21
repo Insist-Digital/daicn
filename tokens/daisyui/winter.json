@@ -1,0 +1,51 @@
+{
+  "$description": "daisyUI 'winter' theme, remapped to shadcn's CSS variable naming convention.",
+  "background": { "$type": "color", "$value": "oklch(100% 0 0)", "$description": "daisyUI 'winter' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(41.886% 0.053 255.824)", "$description": "daisyUI 'winter' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(56.86% 0.255 257.57)", "$description": "daisyUI 'winter' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(91.372% 0.051 257.57)", "$description": "daisyUI 'winter' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(97.466% 0.03 282.339)", "$description": "daisyUI 'winter' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(97.466% 0.011 259.822)", "$description": "daisyUI 'winter' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 255.824)" },
+
+  "accent": { "$type": "color", "$value": "oklch(97.466% 0.02 335.171)", "$description": "daisyUI 'winter' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(73.092% 0.11 20.076)", "$description": "daisyUI 'winter' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(14.618% 0.022 20.076)", "$description": "daisyUI 'winter' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(88.127% 0.085 214.515)", "$description": "daisyUI 'winter' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(17.625% 0.017 214.515)", "$description": "daisyUI 'winter' info-content" },
+  "success": { "$type": "color", "$value": "oklch(80.494% 0.077 197.823)", "$description": "daisyUI 'winter' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(16.098% 0.015 197.823)", "$description": "daisyUI 'winter' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(89.172% 0.045 71.47)", "$description": "daisyUI 'winter' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(17.834% 0.009 71.47)", "$description": "daisyUI 'winter' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(93.268% 0.016 262.751)", "$description": "daisyUI 'winter' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(59.939% 0.191 335.171)", "$description": "daisyUI 'winter' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

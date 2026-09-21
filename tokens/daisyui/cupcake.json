@@ -1,0 +1,51 @@
+{
+  "$description": "daisyUI 'cupcake' theme, remapped to shadcn's CSS variable naming convention.",
+  "background": { "$type": "color", "$value": "oklch(97.788% 0.004 56.375)", "$description": "daisyUI 'cupcake' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(23.574% 0.066 313.189)", "$description": "daisyUI 'cupcake' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(85% 0.138 181.071)", "$description": "daisyUI 'cupcake' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(43% 0.078 188.216)", "$description": "daisyUI 'cupcake' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(93.982% 0.03 343.231)", "$description": "daisyUI 'cupcake' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(93.982% 0.007 61.449)", "$description": "daisyUI 'cupcake' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 313.189)" },
+
+  "accent": { "$type": "color", "$value": "oklch(93.982% 0.02 70.697)", "$description": "daisyUI 'cupcake' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(64% 0.246 16.439)", "$description": "daisyUI 'cupcake' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(27% 0.105 12.094)", "$description": "daisyUI 'cupcake' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(68% 0.169 237.323)", "$description": "daisyUI 'cupcake' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(29% 0.066 243.157)", "$description": "daisyUI 'cupcake' info-content" },
+  "success": { "$type": "color", "$value": "oklch(69% 0.17 162.48)", "$description": "daisyUI 'cupcake' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(26% 0.051 172.552)", "$description": "daisyUI 'cupcake' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(79% 0.184 86.047)", "$description": "daisyUI 'cupcake' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(28% 0.066 53.813)", "$description": "daisyUI 'cupcake' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(91.586% 0.006 53.44)", "$description": "daisyUI 'cupcake' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(90% 0.076 70.697)", "$description": "daisyUI 'cupcake' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

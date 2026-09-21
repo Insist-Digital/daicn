@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/daisyui-light.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "daisyui-light.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"daisyui-light\"]" }
+        }
+      ]
+    }
+  }
+}

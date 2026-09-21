@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/dim.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "dim.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"dim\"]" }
+        }
+      ]
+    }
+  }
+}

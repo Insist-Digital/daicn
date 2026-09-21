@@ -1,0 +1,51 @@
+{
+  "$description": "daisyUI 'retro' theme, remapped to shadcn's CSS variable naming convention.",
+  "background": { "$type": "color", "$value": "oklch(91.637% 0.034 90.515)", "$description": "daisyUI 'retro' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(41% 0.112 45.904)", "$description": "daisyUI 'retro' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(80% 0.114 19.571)", "$description": "daisyUI 'retro' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(39% 0.141 25.723)", "$description": "daisyUI 'retro' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(88.272% 0.03 155.995)", "$description": "daisyUI 'retro' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(88.272% 0.049 91.774)", "$description": "daisyUI 'retro' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 45.904)" },
+
+  "accent": { "$type": "color", "$value": "oklch(88.272% 0.02 75.834)", "$description": "daisyUI 'retro' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(70% 0.191 22.216)", "$description": "daisyUI 'retro' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(40% 0.123 38.172)", "$description": "daisyUI 'retro' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(58% 0.158 241.966)", "$description": "daisyUI 'retro' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(96% 0.059 95.617)", "$description": "daisyUI 'retro' info-content" },
+  "success": { "$type": "color", "$value": "oklch(51% 0.096 186.391)", "$description": "daisyUI 'retro' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(96% 0.059 95.617)", "$description": "daisyUI 'retro' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(64% 0.222 41.116)", "$description": "daisyUI 'retro' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(96% 0.059 95.617)", "$description": "daisyUI 'retro' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(84.133% 0.065 90.856)", "$description": "daisyUI 'retro' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(68% 0.162 75.834)", "$description": "daisyUI 'retro' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

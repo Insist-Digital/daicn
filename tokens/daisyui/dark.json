@@ -1,0 +1,49 @@
+{
+  "background": { "$type": "color", "$value": "oklch(25.33% 0.016 252.42)", "$description": "daisyUI 'dark' theme base-100 — sourced from daisyUI's own real dark theme, not an algorithmic lighten/invert of the light theme's values" },
+  "foreground": { "$type": "color", "$value": "oklch(97.807% 0.029 256.847)", "$description": "daisyUI 'dark' theme base-content" },
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(58% 0.233 277.117)", "$description": "daisyUI 'dark' theme primary — a real indigo hue, distinct from light mode's blue; this theme's own dark-mode-designed value, not an algorithmic lighten of the light-mode primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(96% 0.018 272.314)", "$description": "daisyUI 'dark' theme primary-content — a near-white tinted lavender, kept as designed rather than flattened to pure white" },
+
+  "secondary": { "$type": "color", "$value": "oklch(23.26% 0.03 354.308)", "$description": "daisyUI 'dark' theme secondary HUE (a vivid pink), re-derived to shadcn's subtle-secondary tonal role at muted's own lightness — same methodology as light mode, not daisyUI's bold 65%-lightness value" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(23.26% 0.014 253.1)", "$description": "daisyUI 'dark' theme base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(65% 0.02 256.847)" },
+
+  "accent": { "$type": "color", "$value": "oklch(23.26% 0.02 181.912)", "$description": "daisyUI 'dark' theme accent HUE (cyan), re-derived to shadcn's subtle-accent tonal role at muted's own lightness — same methodology as light mode" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(71% 0.194 13.428)", "$description": "daisyUI 'dark' theme error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(27% 0.105 12.094)", "$description": "daisyUI 'dark' theme error-content — dark text, correct contrast choice since this destructive red is light enough (71%) for dark text, same logic as the light theme's own destructive/destructive-foreground pairing" },
+
+  "info": { "$type": "color", "$value": "oklch(74% 0.16 232.661)", "$description": "daisyUI 'dark' theme info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(29% 0.066 243.157)", "$description": "daisyUI 'dark' theme info-content — dark text, correct for this light-lightness info color" },
+  "success": { "$type": "color", "$value": "oklch(76% 0.177 163.223)", "$description": "daisyUI 'dark' theme success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(37% 0.077 168.94)", "$description": "daisyUI 'dark' theme success-content" },
+  "warning": { "$type": "color", "$value": "oklch(82% 0.189 84.429)", "$description": "daisyUI 'dark' theme warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(41% 0.112 45.904)", "$description": "daisyUI 'dark' theme warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(21.15% 0.012 254.09)", "$description": "daisyUI 'dark' theme base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(77% 0.152 181.912)", "$description": "daisyUI 'dark' theme accent, bold — used directly here since charts need contrast, unlike the re-derived {accent} token above" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}

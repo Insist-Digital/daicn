@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/dark.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "dark.css",
+          "format": "css/variables",
+          "options": { "selector": ".dark" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/daisyui/emerald.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/tokens/",
+      "files": [
+        {
+          "destination": "emerald.css",
+          "format": "css/variables",
+          "options": { "selector": "[data-theme=\"emerald\"]" }
+        }
+      ]
+    }
+  }
+}

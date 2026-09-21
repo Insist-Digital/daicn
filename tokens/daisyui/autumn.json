@@ -1,0 +1,51 @@
+{
+  "$description": "daisyUI 'autumn' theme, remapped to shadcn's CSS variable naming convention.",
+  "background": { "$type": "color", "$value": "oklch(95.814% 0 0)", "$description": "daisyUI 'autumn' base-100" },
+  "foreground": { "$type": "color", "$value": "oklch(19.162% 0 0)", "$description": "daisyUI 'autumn' base-content" },
+
+  "card": { "$type": "color", "$value": "{background}" },
+  "card-foreground": { "$type": "color", "$value": "{foreground}" },
+  "popover": { "$type": "color", "$value": "{background}" },
+  "popover-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "primary": { "$type": "color", "$value": "oklch(40.723% 0.161 17.53)", "$description": "daisyUI 'autumn' primary" },
+  "primary-foreground": { "$type": "color", "$value": "oklch(88.144% 0.032 17.53)", "$description": "daisyUI 'autumn' primary-content" },
+
+  "secondary": { "$type": "color", "$value": "oklch(89.107% 0.03 23.865)", "$description": "daisyUI 'autumn' secondary HUE, re-derived to shadcn's subtle-secondary tonal role at muted's own lightness" },
+  "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "muted": { "$type": "color", "$value": "oklch(89.107% 0 0)", "$description": "daisyUI 'autumn' base-200" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 0)" },
+
+  "accent": { "$type": "color", "$value": "oklch(89.107% 0.02 60.729)", "$description": "daisyUI 'autumn' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
+  "accent-foreground": { "$type": "color", "$value": "{foreground}" },
+
+  "destructive": { "$type": "color", "$value": "oklch(53.07% 0.241 24.16)", "$description": "daisyUI 'autumn' error" },
+  "destructive-foreground": { "$type": "color", "$value": "oklch(90.614% 0.048 24.16)", "$description": "daisyUI 'autumn' error-content" },
+
+  "info": { "$type": "color", "$value": "oklch(69.224% 0.097 207.284)", "$description": "daisyUI 'autumn' info" },
+  "info-foreground": { "$type": "color", "$value": "oklch(13.844% 0.019 207.284)", "$description": "daisyUI 'autumn' info-content" },
+  "success": { "$type": "color", "$value": "oklch(60.995% 0.08 174.616)", "$description": "daisyUI 'autumn' success" },
+  "success-foreground": { "$type": "color", "$value": "oklch(12.199% 0.016 174.616)", "$description": "daisyUI 'autumn' success-content" },
+  "warning": { "$type": "color", "$value": "oklch(70.081% 0.164 56.844)", "$description": "daisyUI 'autumn' warning" },
+  "warning-foreground": { "$type": "color", "$value": "oklch(14.016% 0.032 56.844)", "$description": "daisyUI 'autumn' warning-content" },
+
+  "border": { "$type": "color", "$value": "oklch(82.4% 0 0)", "$description": "daisyUI 'autumn' base-300" },
+  "input": { "$type": "color", "$value": "{border}" },
+  "ring": { "$type": "color", "$value": "{primary}" },
+
+  "chart-1": { "$type": "color", "$value": "{primary}" },
+  "chart-2": { "$type": "color", "$value": "oklch(73.425% 0.094 60.729)", "$description": "daisyUI 'autumn' accent, bold — used directly here since charts need contrast" },
+  "chart-3": { "$type": "color", "$value": "{info}" },
+  "chart-4": { "$type": "color", "$value": "{success}" },
+  "chart-5": { "$type": "color", "$value": "{warning}" },
+
+  "sidebar": { "$type": "color", "$value": "{background}" },
+  "sidebar-foreground": { "$type": "color", "$value": "{foreground}" },
+  "sidebar-primary": { "$type": "color", "$value": "{primary}" },
+  "sidebar-primary-foreground": { "$type": "color", "$value": "{primary-foreground}" },
+  "sidebar-accent": { "$type": "color", "$value": "{accent}" },
+  "sidebar-accent-foreground": { "$type": "color", "$value": "{accent-foreground}" },
+  "sidebar-border": { "$type": "color", "$value": "{border}" },
+  "sidebar-ring": { "$type": "color", "$value": "{primary}" }
+}
