@@ -9,12 +9,12 @@
 
 ## 3. Migrate the 35 theme files
 
-- [x] 3.1 Write a one-off migration (not committed) that, for each `tokens/daisyui/*.json`, recomputes `muted-foreground` from its current value and `input` from `foreground`/`background`, using the exported solver, and rewrites only those two lines. Run it, check that `git diff --stat` shows 35 files with two changed lines each, then delete the migration. Verify: the cupcake golden test passes again (script and migration agree), and the diff matches the design's dry run (21 `muted-foreground` changes, light and dark only change `input`).
+- [x] 3.1 Write a one-off migration (not committed) that, for each `tokens/daisyui/*.json`, recomputes `muted-foreground` from its current value and `input` from `foreground`/`background`, using the exported solver, and rewrites only those two lines. Run it, check that `git diff --stat` shows two changed lines in the 21 themes whose `muted-foreground` moves and only the `input` line in the other 14, then delete the migration. Verify: the cupcake golden test passes again (script and migration agree), and the diff matches the design's dry run (21 `muted-foreground` changes, light and dark only change `input`).
 
 ## 4. Contrast test
 
-- [x] 4.1 Add `test/contrast.test.mjs`: glob every theme file, resolve aliases, assert `muted-foreground` ≥ 4.5:1 on `background` and `muted` and `input` ≥ 3:1 on `background`, with failure messages naming theme, pair and ratio. Verify it passes, then temporarily set one theme's `input` back to `{border}` and confirm it fails naming that theme, then restore.
-- [x] 4.2 In the same file, add the non-failing report: the 16-pair grid from the audit, printed with `t.diagnostic`, pairs under their floor marked. Verify `npm test` shows the grid and still passes.
+- [x] 4.1 Add `test/contrast.test.mjs`: glob every theme file, resolve aliases, assert `muted-foreground` ≥ 4.5:1 on `background` and `muted` and `input` ≥ 3:1 on `background`, with failure messages naming theme, pair and ratio. Also assert both values equal what the remap script's formulas produce, so a value that clears the floor but no longer matches the formula is caught. Verify it passes, then temporarily set one theme's `input` back to `{border}` and confirm it fails naming that theme, then restore.
+- [x] 4.2 In the same file, add the non-failing report: the audit's 16 pairs plus the new `input` row (17 rows, a fixed list), printed with `t.diagnostic`, pairs under their floor marked. Verify `npm test` shows the grid and still passes.
 
 ## 5. Integration
 

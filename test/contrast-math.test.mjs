@@ -23,6 +23,10 @@ test("contrastRatio: daicn light's foreground on background is 17.7:1", () => {
   assert.equal(contrastRatio("oklch(21% 0.006 285.885)", WHITE).toFixed(1), "17.7");
 });
 
+test("parseOklchNumbers: reads a unitless lightness on the 0-1 scale as a percent", () => {
+  assert.deepEqual(parseOklchNumbers("oklch(0.97 0.014 343.198)"), parseOklchNumbers("oklch(97% 0.014 343.198)"));
+});
+
 test("parseOklchNumbers: throws on a non-oklch value", () => {
   assert.throws(() => parseOklchNumbers("#ffffff"), /Not a plain oklch/);
 });
@@ -59,6 +63,13 @@ test("solveLightness: checks every ground", () => {
   const onBoth = solveLightness({ chroma: 0, hue: 0, background: WHITE, grounds: [WHITE, muted], floor: 4.5, start: 70 });
   assert.ok(onBoth < onWhiteOnly);
   assert.ok(contrastRatio(`oklch(${onBoth}% 0 0)`, muted) >= 4.5);
+});
+
+test("solveLightness: a fractional start throws rather than returning a fractional lightness", () => {
+  assert.throws(
+    () => solveLightness({ chroma: 0, hue: 0, background: WHITE, floor: 4.5, start: 52.5, label: "example" }),
+    /example: start lightness must be a whole percent, got 52\.5/,
+  );
 });
 
 test("solveLightness: an impossible floor throws, naming the label", () => {

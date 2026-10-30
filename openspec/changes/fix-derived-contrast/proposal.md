@@ -20,7 +20,9 @@ _None. `token-package`'s requirements (DTCG source, install-time build, two outp
 
 ## Impact
 
-- `scripts/daisyui-theme-to-tokens.mjs`: new derivation for `muted-foreground` and `input`; a small contrast helper (OKLCH → relative luminance → WCAG ratio).
+- `scripts/contrast.mjs` (new): OKLCH parsing, OKLab → linear sRGB, WCAG 2 relative luminance and contrast ratio, and the lightness solver.
+- `scripts/daisyui-theme-to-tokens.mjs`: new derivation for `muted-foreground` and `input`, using the shared solver.
+- `test/contrast-math.test.mjs` (new): pins the contrast module to known ratios and the solver to its stepping and throwing behavior.
 - `tokens/daisyui/*.json` (all 35): `muted-foreground` values change where they failed; `input` changes from `{border}` to a literal value everywhere.
 - `test/daisyui-theme-to-tokens.test.mjs`: the cupcake golden test keeps passing only if the script and the migration agree, which makes it the check that they do. `cupcake.json`'s expected values change intentionally.
 - `test/contrast.test.mjs`: new.

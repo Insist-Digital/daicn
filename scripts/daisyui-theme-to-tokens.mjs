@@ -67,7 +67,7 @@ export const MUTED_FOREGROUND_FLOOR = 4.5;
 export const INPUT_MAX_CHROMA = "0.02";
 export const INPUT_FLOOR = 3;
 export const INPUT_DESCRIPTION =
-  "daicn-derived: foreground's hue, its chroma capped at 0.02, lightness stepped away from background to the first whole percent reaching 3:1 against it";
+  `daicn-derived: foreground's hue, its chroma capped at ${INPUT_MAX_CHROMA}, lightness stepped away from background to the first whole percent reaching ${INPUT_FLOOR}:1 against it`;
 const RADIUS_DIVERGENCE_THRESHOLD = 1.5;
 
 function readInput() {

@@ -187,7 +187,8 @@ test("buildFileText: input is its own value, reaching 3:1 on background, and bor
 test("deriveInput: takes foreground's hue and caps a strong chroma at 0.02", () => {
   // valentine's real foreground and background.
   const input = deriveInput({ foreground: "oklch(52% 0.223 3.958)", background: "oklch(97% 0.014 343.198)", label: "valentine" });
-  assert.match(input, new RegExp(`^oklch\\(\\d+% ${INPUT_MAX_CHROMA} 3\\.958\\)$`));
+  const chroma = INPUT_MAX_CHROMA.replace(".", "\\.");
+  assert.match(input, new RegExp(`^oklch\\(\\d+% ${chroma} 3\\.958\\)$`));
 });
 
 test("deriveInput: keeps a neutral foreground's chroma as it is", () => {

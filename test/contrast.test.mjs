@@ -5,6 +5,9 @@
 //   itself (muted-foreground on background and muted, input on
 //   background). The remap script solves these to their floor, so a miss
 //   means a hand edit or a script regression.
+// - Derivation, which also fails the suite: those same two values must be
+//   exactly what the remap script's formulas produce, so an edit that
+//   still clears the floor but no longer matches the formula is caught too.
 // - A report, which never fails: the wider grid of fill/foreground pairs
 //   and fill-as-text uses, most of them copied unchanged from daisyUI.
 //   Their misses are daisyUI's own pairings, kept for fidelity, and are
@@ -14,7 +17,13 @@ import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { contrastRatio } from "../scripts/contrast.mjs";
+import { contrastRatio, parseOklchNumbers } from "../scripts/contrast.mjs";
+import {
+  deriveMutedForeground,
+  deriveInput,
+  MUTED_FOREGROUND_LIGHT_LIGHTNESS,
+  MUTED_FOREGROUND_DARK_LIGHTNESS,
+} from "../scripts/daisyui-theme-to-tokens.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const themesDir = path.join(repoRoot, "tokens", "daisyui");
@@ -77,6 +86,23 @@ for (const file of themeFiles) {
         ratio >= floor,
         `${themeName}: ${foreground} on ${ground} is ${ratio.toFixed(2)}:1, under the ${floor}:1 floor`,
       );
+    }
+  });
+
+  test(`${themeName}: daicn-derived colors match the remap script's formulas`, () => {
+    const tokens = loadTheme(file);
+    const foreground = resolve(tokens, "foreground");
+    const background = resolve(tokens, "background");
+    // The theme files don't record daisyUI's color-scheme; background
+    // lightness gives the same light/dark answer for every shipped theme.
+    const startLightness =
+      parseOklchNumbers(background).l >= 50 ? MUTED_FOREGROUND_LIGHT_LIGHTNESS : MUTED_FOREGROUND_DARK_LIGHTNESS;
+    const expected = {
+      "muted-foreground": deriveMutedForeground({ foreground, background, muted: resolve(tokens, "muted"), startLightness, label: themeName }),
+      input: deriveInput({ foreground, background, label: themeName }),
+    };
+    for (const [key, value] of Object.entries(expected)) {
+      assert.equal(tokens[key].$value, value, `${themeName}: ${key} is not the derived value`);
     }
   });
 }

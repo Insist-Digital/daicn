@@ -31,10 +31,10 @@ The 35 theme files were produced by the script (cupcake is pinned by a golden te
 - Alternative: mix `foreground` into `background` at a percentage (daisyUI-style `color-mix`). Rejected: a mix percentage doesn't guarantee a ratio, and the token format wants a literal value.
 - Alternative: darken `base-300` until it passes. Rejected: `base-300`'s hue is a surface tint, often far from the ink, and the result would no longer be `base-300`, which is the point of keeping `border` as it is.
 
-**4. A one-off migration rewrites only two lines per file.** It reads each `tokens/daisyui/*.json`, computes the two values with the same exported functions, and replaces only the `muted-foreground` `$value` and the whole `input` line (now with a `$description` saying how it was derived), leaving every other line, description and blank line as it is. Light and dark keep their hand-written descriptions. It runs once and is not committed: the lasting checks are the cupcake golden test (script and migration agree) and the contrast test (every file passes).
+**4. A one-off migration rewrites at most two lines per file.** It reads each `tokens/daisyui/*.json`, computes the two values with the same exported functions, and replaces only the `muted-foreground` `$value` and the whole `input` line (now with a `$description` saying how it was derived), leaving every other line, description and blank line as it is. Light and dark keep their hand-written descriptions. It runs once and is not committed: the lasting checks are the cupcake golden test (script and migration agree) and the contrast test (every file passes its floors and matches the formulas).
 - Alternative: regenerate all 35 files from re-fetched daisyUI sources. Rejected (see Non-Goals); it would also overwrite light and dark's hand-written descriptions.
 
-**5. `test/contrast.test.mjs` enforces two guarantees and reports the rest.** It globs `tokens/daisyui/*.json` so new themes are covered automatically, resolves aliases, and asserts `muted-foreground` ≥ 4.5:1 on `background` and `muted` and `input` ≥ 3:1 on `background`, with messages naming theme, pair and ratio. A separate test prints the full grid (the 16 pairs from the audit) with `t.diagnostic`, marking pairs under their floor, and never fails.
+**5. `test/contrast.test.mjs` enforces two guarantees and reports the rest.** It globs `tokens/daisyui/*.json` so new themes are covered automatically, resolves aliases, and asserts `muted-foreground` ≥ 4.5:1 on `background` and `muted` and `input` ≥ 3:1 on `background`, with messages naming theme, pair and ratio. It also asserts both values equal what the remap script's formulas produce for that theme, so an edit that still clears the floor is caught too; this is what keeps the 34 themes other than cupcake (which the golden test pins) on the formula. A separate test prints a fixed grid (the 16 pairs from the audit plus `input`) with `t.diagnostic`, marking pairs under their floor, and never fails.
 
 ## Risks / Trade-offs
 
@@ -46,6 +46,6 @@ The 35 theme files were produced by the script (cupcake is pinned by a golden te
 ## Migration Plan
 
 1. Land the contrast module, its unit test, and the script changes.
-2. Run the migration once over `tokens/daisyui/`, review the diff (two lines per file), and delete the migration file.
+2. Run the migration once over `tokens/daisyui/`, review the diff (two changed lines in the 21 themes whose `muted-foreground` moves, only `input` in the other 14), and delete the migration file.
 3. `npm test` (golden test, contrast test, existing tests) and `npm run build`.
 4. Rollback: revert the commit. Nothing outside this repository depends on the derived values.

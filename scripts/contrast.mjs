@@ -6,11 +6,14 @@
 // matrices, then the WCAG 2 relative-luminance and contrast formulas.
 
 // Unlike the remap script's parseOklch (which keeps each token as-authored
-// so it can be copied into a file verbatim), this returns numbers.
+// so it can be copied into a file verbatim), this returns numbers, with
+// lightness always on the 0-100 percent scale: a unitless lightness
+// (CSS's 0-1 form, e.g. "oklch(0.97 0.014 343.198)") is scaled up.
 export function parseOklchNumbers(value) {
-  const match = value.match(/^oklch\(\s*([\d.]+)%\s+([\d.]+)\s+([\d.]+)\s*\)$/);
-  if (!match) throw new Error(`Not a plain oklch(L% C H) value: "${value}"`);
-  return { l: parseFloat(match[1]), c: parseFloat(match[2]), h: parseFloat(match[3]) };
+  const match = value.match(/^oklch\(\s*([\d.]+)(%?)\s+([\d.]+)\s+([\d.]+)\s*\)$/);
+  if (!match) throw new Error(`Not a plain oklch(L C H) value: "${value}"`);
+  const l = parseFloat(match[1]);
+  return { l: match[2] ? l : l * 100, c: parseFloat(match[3]), h: parseFloat(match[4]) };
 }
 
 // OKLCH -> OKLab -> linear sRGB, each channel clamped to [0, 1]. Linear
@@ -52,6 +55,9 @@ export function contrastRatio(first, second) {
 // beyond `background`'s own lightness. Throws when 0% or 100% is reached
 // without passing. Returns a number, e.g. 52 for "52%".
 export function solveLightness({ chroma, hue, background, grounds = [background], floor, start, label = "color" }) {
+  if (start !== undefined && !Number.isInteger(start)) {
+    throw new Error(`${label}: start lightness must be a whole percent, got ${start}.`);
+  }
   const backgroundLightness = parseOklchNumbers(background).l;
   const step = backgroundLightness >= 50 ? -1 : 1;
   let lightness = start ?? (step < 0 ? Math.ceil(backgroundLightness) - 1 : Math.floor(backgroundLightness) + 1);
