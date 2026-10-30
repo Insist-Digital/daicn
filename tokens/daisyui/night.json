@@ -32,7 +32,7 @@
   "warning-foreground": { "$type": "color", "$value": "oklch(16.648% 0.027 82.95)", "$description": "daisyUI 'night' warning-content" },
 
   "border": { "$type": "color", "$value": "oklch(17.86% 0.034 265.754)", "$description": "daisyUI 'night' base-300" },
-  "input": { "$type": "color", "$value": "{border}" },
+  "input": { "$type": "color", "$value": "oklch(51% 0.007 265.754)", "$description": "daicn-derived: foreground's hue, its chroma capped at 0.02, lightness stepped away from background to the first whole percent reaching 3:1 against it" },
   "ring": { "$type": "color", "$value": "{primary}" },
 
   "chart-1": { "$type": "color", "$value": "{primary}" },

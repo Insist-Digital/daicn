@@ -1,6 +1,6 @@
 {
   "name": "daicn",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Framework-agnostic design tokens (color, radius) — DTCG JSON source, generated CSS.",
   "license": "MIT",
   "type": "module",

@@ -21,7 +21,10 @@ import {
   buildFileText,
   SUBTLE_SECONDARY_CHROMA,
   SUBTLE_ACCENT_CHROMA,
+  INPUT_MAX_CHROMA,
+  deriveInput,
 } from "../scripts/daisyui-theme-to-tokens.mjs";
+import { contrastRatio } from "../scripts/contrast.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -164,4 +167,30 @@ test("buildFileText: chart-2 uses the theme's own bold accent, unlike the re-der
   const parsed = parseThemeBlock(CUPCAKE_BLOCK);
   const generated = JSON.parse(buildFileText(parsed));
   assert.equal(generated["chart-2"].$value, "oklch(90% 0.076 70.697)");
+});
+
+test("buildFileText: muted-foreground reaches 4.5:1 on background and muted", () => {
+  const generated = JSON.parse(buildFileText(parseThemeBlock(CUPCAKE_BLOCK)));
+  const mutedForeground = generated["muted-foreground"].$value;
+  assert.ok(contrastRatio(mutedForeground, generated.background.$value) >= 4.5);
+  assert.ok(contrastRatio(mutedForeground, generated.muted.$value) >= 4.5);
+});
+
+test("buildFileText: input is its own value, reaching 3:1 on background, and border stays base-300", () => {
+  const generated = JSON.parse(buildFileText(parseThemeBlock(CUPCAKE_BLOCK)));
+  assert.notEqual(generated.input.$value, "{border}");
+  assert.match(generated.input.$value, /^oklch\(/);
+  assert.ok(contrastRatio(generated.input.$value, generated.background.$value) >= 3);
+  assert.equal(generated.border.$value, "oklch(91.586% 0.006 53.44)");
+});
+
+test("deriveInput: takes foreground's hue and caps a strong chroma at 0.02", () => {
+  // valentine's real foreground and background.
+  const input = deriveInput({ foreground: "oklch(52% 0.223 3.958)", background: "oklch(97% 0.014 343.198)", label: "valentine" });
+  assert.match(input, new RegExp(`^oklch\\(\\d+% ${INPUT_MAX_CHROMA} 3\\.958\\)$`));
+});
+
+test("deriveInput: keeps a neutral foreground's chroma as it is", () => {
+  const input = deriveInput({ foreground: "oklch(21% 0 0)", background: "oklch(100% 0 0)", label: "example" });
+  assert.match(input, /^oklch\(\d+% 0 0\)$/);
 });
