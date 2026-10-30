@@ -16,7 +16,7 @@
   "secondary-foreground": { "$type": "color", "$value": "{foreground}" },
 
   "muted": { "$type": "color", "$value": "oklch(95% 0.0081 61.42)", "$description": "daisyUI 'silk' base-200" },
-  "muted-foreground": { "$type": "color", "$value": "oklch(55% 0.02 61.42)" },
+  "muted-foreground": { "$type": "color", "$value": "oklch(53% 0.02 61.42)" },
 
   "accent": { "$type": "color", "$value": "oklch(95% 0.02 284.3)", "$description": "daisyUI 'silk' accent HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness" },
   "accent-foreground": { "$type": "color", "$value": "{foreground}" },
@@ -32,7 +32,7 @@
   "warning-foreground": { "$type": "color", "$value": "oklch(43.92% 0.1085 80)", "$description": "daisyUI 'silk' warning-content" },
 
   "border": { "$type": "color", "$value": "oklch(90% 0.0081 61.42)", "$description": "daisyUI 'silk' base-300" },
-  "input": { "$type": "color", "$value": "{border}" },
+  "input": { "$type": "color", "$value": "oklch(64% 0.0081 61.42)", "$description": "daicn-derived: foreground's hue, its chroma capped at 0.02, lightness stepped away from background to the first whole percent reaching 3:1 against it" },
   "ring": { "$type": "color", "$value": "{primary}" },
 
   "chart-1": { "$type": "color", "$value": "{primary}" },

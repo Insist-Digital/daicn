@@ -15,10 +15,20 @@
 //                             hue from the source, lightness pinned to
 //                             muted's own lightness, a small fixed chroma
 //                             — not daisyUI's bold fill
+//   muted-foreground       -> daicn-derived: foreground's hue, chroma 0.02,
+//                             lightness starting at 55% (light) / 65%
+//                             (dark) and stepped away from background, 1%
+//                             at a time, until it reaches 4.5:1 on both
+//                             background and muted
+//   input                  -> daicn-derived, its own value (not border):
+//                             foreground's hue, its chroma capped at 0.02,
+//                             lightness stepped away from background until
+//                             it reaches 3:1 against it. border stays
+//                             base-300, a faint divider
 //   info/success/warning/error (+content) -> direct copy, including
 //                             whatever foreground pairing the theme itself
 //                             chose (do not assume white/black)
-//   card/popover/sidebar    -> alias {background}; input -> alias {border};
+//   card/popover/sidebar    -> alias {background};
 //                             ring/chart-1/sidebar-primary -> alias {primary}
 //   chart-2                 -> the theme's own bold accent value (direct),
 //                             not the re-derived subtle {accent} above
@@ -46,11 +56,18 @@
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
+import { solveLightness } from "./contrast.mjs";
 
 export const SUBTLE_SECONDARY_CHROMA = 0.03;
 export const SUBTLE_ACCENT_CHROMA = 0.02;
 export const MUTED_FOREGROUND_LIGHT_LIGHTNESS = "55%";
 export const MUTED_FOREGROUND_DARK_LIGHTNESS = "65%";
+export const MUTED_FOREGROUND_CHROMA = "0.02";
+export const MUTED_FOREGROUND_FLOOR = 4.5;
+export const INPUT_MAX_CHROMA = "0.02";
+export const INPUT_FLOOR = 3;
+export const INPUT_DESCRIPTION =
+  `daicn-derived: foreground's hue, its chroma capped at ${INPUT_MAX_CHROMA}, lightness stepped away from background to the first whole percent reaching ${INPUT_FLOOR}:1 against it`;
 const RADIUS_DIVERGENCE_THRESHOLD = 1.5;
 
 function readInput() {
@@ -110,6 +127,30 @@ function subtleTone(sourceValue, mutedValue, chroma) {
   return `oklch(${mutedLightness} ${chroma} ${hue})`;
 }
 
+// The two color tokens daicn derives itself rather than copying from
+// daisyUI. Both take token values (not daisyUI keys) so the one-off
+// migration of the existing theme files could call them too.
+export function deriveMutedForeground({ foreground, background, muted, startLightness, label }) {
+  const { hue } = parseOklch(foreground);
+  const lightness = solveLightness({
+    chroma: MUTED_FOREGROUND_CHROMA,
+    hue,
+    background,
+    grounds: [background, muted],
+    floor: MUTED_FOREGROUND_FLOOR,
+    start: parseFloat(startLightness),
+    label: `${label} muted-foreground`,
+  });
+  return `oklch(${lightness}% ${MUTED_FOREGROUND_CHROMA} ${hue})`;
+}
+
+export function deriveInput({ foreground, background, label }) {
+  const { chroma: foregroundChroma, hue } = parseOklch(foreground);
+  const chroma = parseFloat(foregroundChroma) > parseFloat(INPUT_MAX_CHROMA) ? INPUT_MAX_CHROMA : foregroundChroma;
+  const lightness = solveLightness({ chroma, hue, background, floor: INPUT_FLOOR, label: `${label} input` });
+  return `oklch(${lightness}% ${chroma} ${hue})`;
+}
+
 // e.g. "1rem" -> 1, "0.25rem" -> 0.25 — every daisyUI radius role is a
 // plain rem value, never a calc() or a unitless number.
 export function remToNumber(value) {
@@ -153,7 +194,7 @@ function entryLine(key, value, description) {
 export function buildFileText({ name, scheme, colors, radii }) {
   const mutedForegroundLightness =
     scheme === "dark" ? MUTED_FOREGROUND_DARK_LIGHTNESS : MUTED_FOREGROUND_LIGHT_LIGHTNESS;
-  const { hue: foregroundHue } = parseOklch(colors["base-content"]);
+  const derivedFrom = { foreground: colors["base-content"], background: colors["base-100"], label: name };
   const src = (key) => `daisyUI '${name}' ${key}`;
   const ref = (name) => `{${name}}`;
 
@@ -185,7 +226,7 @@ export function buildFileText({ name, scheme, colors, radii }) {
     ],
     [
       entryLine("muted", colors["base-200"], src("base-200")),
-      entryLine("muted-foreground", `oklch(${mutedForegroundLightness} 0.02 ${foregroundHue})`),
+      entryLine("muted-foreground", deriveMutedForeground({ ...derivedFrom, muted: colors["base-200"], startLightness: mutedForegroundLightness })),
     ],
     [
       entryLine("accent", accentValue, `${src("accent")} HUE, re-derived to shadcn's subtle-accent tonal role at muted's own lightness`),
@@ -205,7 +246,7 @@ export function buildFileText({ name, scheme, colors, radii }) {
     ],
     [
       entryLine("border", colors["base-300"], src("base-300")),
-      entryLine("input", ref("border")),
+      entryLine("input", deriveInput(derivedFrom), INPUT_DESCRIPTION),
       entryLine("ring", ref("primary")),
     ],
     [
