@@ -2,6 +2,11 @@
 
 Defines the contrast guarantees daicn makes for the color tokens it derives itself, rather than copying from daisyUI, and how those guarantees are checked across every theme the package ships.
 
+Terms used below:
+
+- **Contrast ratio** is the WCAG 2 contrast ratio, computed as `scripts/contrast.mjs` does it: each `oklch()` value is converted to linear sRGB through OKLab (Björn Ottosson's matrices), each channel clamped to [0, 1], then weighted into WCAG relative luminance. Which whole-percent lightness passes first depends on this conversion, so derived values are reproducible only with it.
+- **Light and dark themes**: when converting a daisyUI source, a theme is light or dark according to its `color-scheme`. The shipped theme files don't record `color-scheme`, so a theme file is light when its `background`'s lightness is 50% or more, and dark otherwise. The two rules agree for every shipped theme.
+
 ## Requirements
 
 ### Requirement: muted-foreground meets text contrast on its grounds
@@ -15,8 +20,16 @@ In every theme, `muted-foreground` SHALL reach a WCAG 2 contrast ratio of at lea
 - **WHEN** a theme's default `muted-foreground` falls under 4.5:1 on `background` or on `muted`
 - **THEN** its lightness moves away from `background` (darker when `background`'s lightness is 50% or more, lighter otherwise), in whole-percent steps, to the first value that reaches 4.5:1 on both, keeping its hue (from `foreground`) and its chroma (0.02)
 
+#### Scenario: No lightness step satisfies both grounds
+- **WHEN** no whole-percent lightness, moving away from `background`, reaches 4.5:1 on both `background` and `muted` before 0% or 100%
+- **THEN** derivation fails with an error naming the theme, instead of writing a value under the floor
+
 ### Requirement: input meets the non-text contrast floor against background
 In every theme, `input` SHALL be a color value of its own, not an alias of `border`, and SHALL reach a WCAG 2 contrast ratio of at least 3:1 against `background`.
+
+#### Scenario: input is left as an alias of border
+- **WHEN** a theme file's `input` `$value` is `{border}` rather than a derived color
+- **THEN** the test suite fails, naming the theme and `input`
 
 #### Scenario: Deriving input for a theme
 - **WHEN** a theme's `input` is derived
@@ -53,7 +66,7 @@ The package's test suite SHALL check both derived guarantees in every theme file
 - **THEN** the contrast tests cover it without any change to the tests
 
 ### Requirement: Contrast of daisyUI's copied pairs is reported, not enforced
-The test suite SHALL print the contrast ratio of a fixed list of fill/foreground pairs and fill-as-text uses (those from the contrast audit, plus `input` on `background`) in every theme, including pairs copied unchanged from daisyUI, without failing on them.
+The test suite SHALL print the contrast ratio of a fixed list of fill/foreground pairs and fill-as-text uses (the `REPORT` list in `test/contrast.test.mjs`) in every theme, including pairs copied unchanged from daisyUI, without failing on them.
 
 #### Scenario: A copied daisyUI pair falls under 4.5:1
 - **WHEN** a theme's `primary-foreground` on `primary` (or another pair copied from daisyUI) is under 4.5:1
